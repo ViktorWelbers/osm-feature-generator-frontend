@@ -14,16 +14,23 @@
               <geo-description/>
             </a-col>
             <a-col :span="8">
-              <geo-form @ADD-GEO-ITEM-EVENT="addGeoItem" :button-loading="buttonLoading"></geo-form>
+              <geo-form @ADD-GEO-ITEM-EVENT="getGeoInformation" :button-loading="buttonLoading"></geo-form>
             </a-col>
             <a-col :span="8">
               <geo-road-map></geo-road-map>
             </a-col>
-            <a-divider/>
-            <ul v-for="item in GeoItems" :key="item.id">
-              <geo-item v-bind:geo_information="item.label" v-bind:id="item.id"></geo-item>
-            </ul>
           </a-row>
+          <a-divider/>
+          <table>
+            <tr v-if="geoInformationData">
+              <th>Geospatial Feature</th>
+              <th>Amount</th>
+            </tr>
+            <tr v-for="(geoValue,geoKey) in geoInformationData" :key="geoKey">
+              <td>{{ geoKey }}</td>
+              <td>{{ geoValue }}</td>
+            </tr>
+          </table>
         </div>
       </a-layout-content>
       <a-layout-footer style="text-align: center">
@@ -34,8 +41,6 @@
 </template>
 
 <script>
-import GeoItem from './components/GeoItem.vue';
-import uniqueId from 'lodash.uniqueid'
 import GeoForm from './components/GeoForm';
 import GeoMenu from "@/components/GeoMenu";
 import {defineComponent} from 'vue';
@@ -47,7 +52,6 @@ export default defineComponent({
   name: 'app',
   components: {
     GeoDescription,
-    GeoItem,
     GeoForm,
     GeoMenu,
     GeoHeader,
@@ -56,22 +60,18 @@ export default defineComponent({
 
   data() {
     return {
-      GeoItems: [],
-      info: null,
+      geoInformationData: null,
       buttonLoading: false,
     };
   },
 
   methods: {
-    async addGeoItem(Latitude, Longitude, Radius) {
+    async getGeoInformation(Latitude, Longitude, Radius) {
       this.buttonLoading = true
       const url = 'simple/' + Longitude + '/' + Latitude + '/' + Radius;
-      this.info = await (await fetch(url)).json();
+      this.geoInformationData = await (await fetch(url)).json();
+      console.log(this.geoInformationData);
       this.buttonLoading = false
-      this.GeoItems.push({
-        id: uniqueId('geo-'),
-        label: this.info
-      });
     }
   }
 });
