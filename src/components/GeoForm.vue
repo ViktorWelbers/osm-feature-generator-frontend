@@ -1,5 +1,5 @@
 <template>
-  <a-form :label-col="labelCol" :wrapper-col="wrapperCol">
+  <a-form :label-col="labelCol">
     <a-form-item label="Latitude">
       <a-input-number v-model:value="lat" placeholder="Latitude"/>
     </a-form-item>
@@ -10,12 +10,16 @@
       <a-input-number v-model:value="radius" placeholder="Radius"/>
     </a-form-item>
     <a-form-item>
-      <a-button type="primary" style="margin-left: 50px" @click.prevent="onSubmission">Submit</a-button>
+      <a-button type="primary" :loading="buttonLoading" style="margin-left: 100px" @click.prevent="onSubmission">
+        Search the area!
+      </a-button>
     </a-form-item>
   </a-form>
 </template>
 
+
 <script>
+
 export default {
   methods: {
     onSubmission() {
@@ -28,20 +32,20 @@ export default {
       this.radius = '';
     }
   },
+  props: {
+    buttonLoading: {Boolean, default: false},
+  },
   data() {
     return {
       lat: '',
       lon: '',
-      radius: ''
+      radius: '',
     }
   },
   setup() {
     return {
       labelCol: {
-        span: 1
-      },
-      wrapperCol: {
-        span: 1
+        span: 4
       }
     }
   }

@@ -9,7 +9,7 @@ export default {
   name: 'GeoItem.vue',
   props: {
     id: {required: true, type: String},
-    geo_information: {required: true, type: String}
+    geo_information: {required: true, type: Map}
   }
 }
 </script>

@@ -1,15 +1,14 @@
 <template>
   <a-page-header
       style="border: 1px solid rgb(235, 237, 240)"
-      title="Search for a Location"
-      :breadcrumb="{ routes }"
+      title="GeoSh - A geospatial search that let's you explore the world and it's characteristics"
   />
 </template>
 
 <script>
 const routes = [
   {
-    path: 'index',
+    path: '/',
     breadcrumbName: 'Geo-Search'
   },
   {
