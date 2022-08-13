@@ -21,9 +21,7 @@
             </a-col>
           </a-row>
           <a-divider/>
-          <div v-if="tableData">
-            <geo-table> </geo-table>
-          </div>
+          <geo-table :table-data="geoInformationData"></geo-table>
         </div>
       </a-layout-content>
       <a-layout-footer style="text-align: center">
@@ -55,45 +53,19 @@ export default defineComponent({
 
   data() {
     return {
-      geoInformationData: null,
+      geoInformationData: [],
       buttonLoading: false,
-      tableData: null,
-    };
-  },
-  setup() {
-    return {
-      columns: [
-        {
-          title: 'Feature',
-          dataIndex: 'feature',
-          key: 'feature',
-        },
-        {
-          title: 'Amount',
-          dataIndex: 'amount',
-          key: 'amount',
-        },
-      ]
     };
   },
   methods: {
     async getGeoInformation(Latitude, Longitude, Radius) {
-      this.buttonLoading = true
-      const url = 'simple/' + Longitude + '/' + Latitude + '/' + Radius;
+      this.buttonLoading = true;
+      const url = 'slices/' + Longitude + '/' + Latitude + '/' + Radius;
       this.geoInformationData = await (await fetch(url)).json();
       console.log(this.geoInformationData);
-      this.buttonLoading = false
-      this.createTableDataSource()
+      this.buttonLoading = false;
     },
-    createTableDataSource() {
-      this.geoInformationData.forEach((value, key) => {
-        this.tableData.push({
-          feature: key,
-          value: value,
-        });
-      });
-    },
-  }
+  },
 });
 </script>
 
