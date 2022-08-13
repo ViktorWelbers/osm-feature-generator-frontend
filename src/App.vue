@@ -21,16 +21,9 @@
             </a-col>
           </a-row>
           <a-divider/>
-          <table>
-            <tr v-if="geoInformationData">
-              <th>Geospatial Feature</th>
-              <th>Amount</th>
-            </tr>
-            <tr v-for="(geoValue,geoKey) in geoInformationData" :key="geoKey">
-              <td>{{ geoKey }}</td>
-              <td>{{ geoValue }}</td>
-            </tr>
-          </table>
+          <div v-if="tableData">
+            <geo-table> </geo-table>
+          </div>
         </div>
       </a-layout-content>
       <a-layout-footer style="text-align: center">
@@ -47,6 +40,7 @@ import {defineComponent} from 'vue';
 import GeoHeader from "@/components/GeoHeader";
 import GeoDescription from "@/components/GeoDescription";
 import GeoRoadMap from "@/components/GeoRoadMap";
+import GeoTable from "@/components/GeoTable";
 
 export default defineComponent({
   name: 'app',
@@ -56,15 +50,32 @@ export default defineComponent({
     GeoMenu,
     GeoHeader,
     GeoRoadMap,
+    GeoTable
   },
 
   data() {
     return {
       geoInformationData: null,
       buttonLoading: false,
+      tableData: null,
     };
   },
-
+  setup() {
+    return {
+      columns: [
+        {
+          title: 'Feature',
+          dataIndex: 'feature',
+          key: 'feature',
+        },
+        {
+          title: 'Amount',
+          dataIndex: 'amount',
+          key: 'amount',
+        },
+      ]
+    };
+  },
   methods: {
     async getGeoInformation(Latitude, Longitude, Radius) {
       this.buttonLoading = true
@@ -72,7 +83,16 @@ export default defineComponent({
       this.geoInformationData = await (await fetch(url)).json();
       console.log(this.geoInformationData);
       this.buttonLoading = false
-    }
+      this.createTableDataSource()
+    },
+    createTableDataSource() {
+      this.geoInformationData.forEach((value, key) => {
+        this.tableData.push({
+          feature: key,
+          value: value,
+        });
+      });
+    },
   }
 });
 </script>
