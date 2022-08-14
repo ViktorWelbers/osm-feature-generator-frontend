@@ -3,6 +3,8 @@
 This a very basic frontend created with vue.js and ant design vue.
 It is meant as a frontend for a geo-feature-service, that I have created in [Go](https://github.com/ViktorWelbers/geo-feature-service), which has to be setup to use this Frontend.
 
+Once the backend has been setup, it can be used to retrieve geospatial information around a chosen lat-lon combination.
+
 ## Project setup
 ```
 npm install
