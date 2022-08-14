@@ -1,5 +1,5 @@
 <template>
-    <a-row>
+    <a-row :gutter="16">
       <a-col :span="8">
         <geo-description/>
       </a-col>

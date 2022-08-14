@@ -1,11 +1,11 @@
 <template>
   <div class="logo"/>
   <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
+    <!--    <a-menu-item key="1">-->
+    <!--      <user-outlined/>-->
+    <!--      <router-link to="/profile"> Profile</router-link>-->
+    <!--    </a-menu-item>-->
     <a-menu-item key="2">
-      <user-outlined/>
-      <router-link to="/profile"> Profile</router-link>
-    </a-menu-item>
-    <a-menu-item key="3">
       <search-outlined/>
       <router-link to="/"> Geo Feature Search</router-link>
     </a-menu-item>
@@ -13,7 +13,7 @@
 </template>
 <script>
 
-import {SearchOutlined, UserOutlined} from "@ant-design/icons-vue";
+import {SearchOutlined} from "@ant-design/icons-vue";
 import {defineComponent, ref} from 'vue';
 
 export default defineComponent({
@@ -21,7 +21,7 @@ export default defineComponent({
   components: {
     // FileImageFilled,
     // UploadOutlined,
-    UserOutlined,
+    // UserOutlined,
     SearchOutlined
   },
 
