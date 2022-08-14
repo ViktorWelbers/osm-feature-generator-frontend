@@ -2,13 +2,35 @@
   <div style="background: #ececec; padding: 30px">
     <a-card title="API Documentation" bordered style="width: 85vw">
       <a-card title="General Information" class="inner-card">
-        <p>
-          This is an API that allows you to search for geospatial features in a radius around a lat lon combination.
+        <span>
+          The underlying API allows you to search for geospatial features in a radius around a lat lon combination.
           The itself API is built on POSTGIS and OpenStreetMap and was implemented in Go.
-        </p>
+        </span>
       </a-card>
       <a-card title="API Patterns" class="inner-card">
-        <p></p>
+        <p><b>All Features</b></p>
+        To get an aggregated feature vector, with a key-value pair for every feature (even if that feature isn't present
+        in the queried radius), the following GET-Request can be used:
+        <br><br>
+        GET /all/{LONGITUDE}/{LATITUDE}/{RADIUS}
+        <br><br>
+        <p><b>Only collected Features</b></p>
+        To get an an aggregated feature vector, that just shows a key-value pair for each feature that is present in the
+        queried
+        radius, the following GET-Request can be used:
+        <br><br>
+        GET /simple/{LONGITUDE}/{LATITUDE}/{RADIUS}
+        <br><br>
+        <p><b>Retrieve Data as Slice of Maps</b></p>
+        To get a slice of maps, instead of a map as previously described following two GET-Requests can be used:
+        <br><br>
+        For a slice with only collected features:
+        <br><br>
+        GET /slices/simple/{LONGITUDE}/{LATITUDE}/{RADIUS}
+        <br><br>
+        For a slice with all features:
+        <br><br>
+        GET /slices/all/{LONGITUDE}/{LATITUDE}/{RADIUS}
       </a-card>
     </a-card>
     <a-divider></a-divider>

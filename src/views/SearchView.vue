@@ -39,7 +39,7 @@ export default defineComponent({
   methods: {
     async getGeoInformation(Latitude, Longitude, Radius) {
       this.buttonLoading = true;
-      const url = 'slices/' + Longitude + '/' + Latitude + '/' + Radius;
+      const url = 'simple/slices/' + Longitude + '/' + Latitude + '/' + Radius;
       this.geoInformationData = await (await fetch(url)).json();
       console.log(this.geoInformationData);
       this.buttonLoading = false;
