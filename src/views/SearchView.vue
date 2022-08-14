@@ -16,10 +16,10 @@
 
 <script>
 import {defineComponent} from 'vue';
-import GeoForm from '@/components/GeoForm';
-import GeoDescription from "@/components/GeoDescription";
-import GeoRoadMap from "@/components/HomeComponents/GeoRoadMap";
-import GeoTable from "@/components/HomeComponents/GeoTable";
+import GeoForm from '@/components/SearchViewComponents/GeoForm';
+import GeoDescription from "@/components/SearchViewComponents/GeoDescription";
+import GeoRoadMap from "@/components/SearchViewComponents/GeoRoadMap";
+import GeoTable from "@/components/SearchViewComponents/GeoTable";
 
 export default defineComponent({
   name: 'HomeView',

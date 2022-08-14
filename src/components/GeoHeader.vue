@@ -1,8 +1,5 @@
 <template>
-  <a-page-header
-      style="border: 1px solid rgb(235, 237, 240)"
-      title="GeoSh - A geospatial search that let's you explore the world and it's characteristics"
-  />
+  <a-layout-header ></a-layout-header>
 </template>
 
 <script>
