@@ -1,13 +1,32 @@
 <template>
   <a-form :label-col="labelCol">
     <a-form-item label="Latitude">
-      <a-input-number v-model:value="lat" placeholder="Latitude"/>
+      <a-input-number
+          v-model:value="lat"
+          placeholder="Latitude"
+          style="width: 200px"
+          :min="46"
+          :max="57"
+          :step="0.00000000000001"
+      />
     </a-form-item>
     <a-form-item label="Longitude">
-      <a-input-number v-model:value="lon" placeholder="Longitude"/>
+      <a-input-number
+          v-model:value="lon"
+          placeholder="Longitude"
+          style="width: 200px"
+          :min="4"
+          :max="14"
+          :step="0.00000000000001"
+      />
     </a-form-item>
     <a-form-item label="Radius">
-      <a-input-number v-model:value="radius" placeholder="Radius"/>
+      <a-input-number
+          v-model:value="radius"
+          placeholder="Radius"
+          style="width: 200px"
+          :step="1"
+          string-mode/>
     </a-form-item>
     <a-form-item>
       <a-button type="primary" :loading="buttonLoading" style="margin-left: 100px" @click.prevent="onSubmission">
