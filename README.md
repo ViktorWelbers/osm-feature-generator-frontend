@@ -1,6 +1,6 @@
 # geo-feature-service-frontend
 
-This project is a frontend for the geo-feature-service, that I have created
+This project is a frontend for an osm-feature-service, that I have created
 in [Go](https://github.com/ViktorWelbers/geo-feature-service), which has to be in place to use this frontend.
 
 It doesn't have much functionality, but it is rather meant as a proof of concept.
